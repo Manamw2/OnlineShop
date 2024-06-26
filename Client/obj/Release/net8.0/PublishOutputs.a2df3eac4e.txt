@@ -1,0 +1,3 @@
+D:\package-lock.json
+D:\tailwind.extension.json
+D:\web.config

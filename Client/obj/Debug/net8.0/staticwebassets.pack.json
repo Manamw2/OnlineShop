@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\mahmoudamr\\Blazor\\BlazorProject\\Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "D:\\mahmoudamr\\Blazor\\BlazorProject\\Client\\obj\\Debug\\net8.0\\compressed\\2oocg7l2v1.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "D:\\mahmoudamr\\Blazor\\BlazorProject\\Client\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "D:\\mahmoudamr\\Blazor\\BlazorProject\\Client\\wwwroot\\css\\output.css",
+      "PackagePath": "staticwebassets\\css\\output.css"
+    },
+    {
+      "Id": "D:\\mahmoudamr\\Blazor\\BlazorProject\\Client\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
+    },
+    {
+      "Id": "D:\\mahmoudamr\\Blazor\\BlazorProject\\Client\\wwwroot\\css\\styles.output.css",
+      "PackagePath": "staticwebassets\\css\\styles.output.css"
+    },
+    {
+      "Id": "D:\\mahmoudamr\\Blazor\\BlazorProject\\Client\\wwwroot\\download.jfif",
+      "PackagePath": "staticwebassets\\download.jfif"
+    },
+    {
+      "Id": "D:\\mahmoudamr\\Blazor\\BlazorProject\\Client\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "D:\\mahmoudamr\\Blazor\\BlazorProject\\Client\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\mahmoudamr\\Blazor\\BlazorProject\\Client\\wwwroot\\pexels-madebymath-90946.jpg",
+      "PackagePath": "staticwebassets\\pexels-madebymath-90946.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Client.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Client.props",
+      "PackagePath": "build\\Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Client.props",
+      "PackagePath": "buildMultiTargeting\\Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Client.props",
+      "PackagePath": "buildTransitive\\Client.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

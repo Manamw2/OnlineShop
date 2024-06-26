@@ -1,0 +1,51 @@
+﻿@page "/"
+@using Services
+@using Shared.Dtos.Product
+@inject ProductService ProductService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Home</PageTitle>
+
+
+<!--serch and showall-->
+<section>
+    <div class="flex flex-col justify-around items-center space-y-6 md:space-y-0 md:flex-row my-32">
+        <input type="text" placeholder="Seach for what you need" class="border border-violet-600 rounded-2xl px-4 py-2 placeholder:text-xs placeholder:text-light placeholder:underline placeholder:text-center placeholder:md:text-left outline-none"/>
+        <button class="rounded-2xl border-2 border-violet-800 bg-white text-violet-800 px-4 py-2 hover:bg-violet-800 hover:text-white">Show ALl</button>
+    </div>
+</section>
+
+<!--grid-->
+<section>
+    @if(products!=null){
+        <div class="grid md:grid-cols-3 xl:grid-cols-4 gap-6 my-20 mx-32">
+            @foreach(var product in products){
+                <div class="container relative group" @onclick="() => GoToDetails(product.Id)">
+                    <img src=@product.ImageUrl alt="" class="group-hover:scale-105 duration-200 w-full h-60"/>
+                    <div class="flex justify-around items-center absolute h-1/4 bottom-0 right-0 left-0 bg-gray-400 opacity-0 group-hover:opacity-60">
+                        <p class="text-center text-black text-bold ">
+                            @product.Name
+                        </p>
+                        <p class="text-center text-black text-bold ">
+                            @product.CategoryName
+                        </p>
+                    </div>
+                </div>
+            }
+         </div>
+    }
+</section>
+
+@code {
+    private IEnumerable<ProductDto> products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("hello");
+        products = await ProductService.GetProductsAsync();
+    }
+    private void GoToDetails(int productId)
+    {
+        NavigationManager.NavigateTo($"/productdetails/{productId}");
+    }
+}

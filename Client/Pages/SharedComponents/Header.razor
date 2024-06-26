@@ -1,0 +1,40 @@
+﻿@inject NavigationManager NavigationManager
+
+<section id="hero" class="bg-violet-700">
+    <div class="flex max-w-6xl mx-auto py-6 p-12 justify-between items-center text-white">
+        <img src="icon-192.png" alt="icon" class="w-20 h-20 object-contain" @onclick="()=> GoToHome()" />
+        <div class="hidden md:flex space-x-4">
+            <div class="group">
+                <a href="newProduct">Products</a>
+                <div class="group-hover:border-b-2" ></div>
+            </div>
+            <div class="group">
+                <a href="login">Cart</a>
+                <div class="group-hover:border-b-2"></div>
+            </div>
+            <div class="group">
+                <a href="video">Repos</a>
+                <div class="group-hover:border-b-2"></div>
+            </div>
+            <div class="group">
+                <a href="chat">About</a>
+                <div class="group-hover:border-b-2"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    private void GoToHome()
+    {
+        // Check if NavigationManager is not null before accessing it
+        if (NavigationManager != null)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+            Console.WriteLine("NavigationManager is null");
+        }
+    }
+}

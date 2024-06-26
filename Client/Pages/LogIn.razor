@@ -1,0 +1,83 @@
+@page "/login"
+@using Services
+@using Shared.Dtos.Account
+@inject AccountService AccountService
+@inject NavigationManager Navigation
+
+<h3 class="text-2xl font-bold mb-4 mt-32 pl-20">Login</h3>
+<EditForm Model="loginDto" OnValidSubmit="HandleLogin" class="px-20">
+    <DataAnnotationsValidator />
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Username</label>
+        <InputText id="UserNameOrEmail" @bind-Value="loginDto.UserNameOrEmail" />
+        <ValidationMessage For="@(() => loginDto.UserNameOrEmail)"/>
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+        <InputText id="password" @bind-Value="loginDto.Password" type="password" />
+        <ValidationMessage For="@(() => loginDto.Password)"/>
+    </div>
+    <button type="submit"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Login</button>
+     @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="text-red-500 mt-4">@errorMessage</div>
+    }
+</EditForm>
+
+<h3 class="text-2xl font-bold mb-4 mt-32 pl-20">Register</h3>
+<EditForm Model="registerDto" OnValidSubmit="HandleRegister" class="px-20">
+    <DataAnnotationsValidator />
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Username</label>
+        <InputText id="UserName" @bind-Value="registerDto.UserName" />
+        <ValidationMessage For="@(() => registerDto.UserName)"/>
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Username</label>
+        <InputText id="Email" @bind-Value="registerDto.Email" />
+        <ValidationMessage For="@(() => registerDto.Email)"/>
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+        <InputText id="register_password" @bind-Value="registerDto.Password" type="password" />
+        <ValidationMessage For="@(() => registerDto.Password)"/>
+    </div>
+    <button type="submit"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Register</button>
+     @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="text-red-500 mt-4">@errorMessage</div>
+    }
+</EditForm>
+
+@code {
+    private LoginDto loginDto = new LoginDto();
+    private RegisterDto registerDto = new RegisterDto();
+    private string? errorMessage;
+    private async Task HandleLogin()
+    {
+        var success = await AccountService.Login(loginDto);
+        
+        if (success)
+        {
+            Navigation.NavigateTo("/");
+        }
+        else
+        {
+            errorMessage = "Username or password is incorrect.";
+        }
+    }
+
+    private async Task HandleRegister()
+    {
+        var success = await AccountService.Register(registerDto);
+        
+        if (success)
+        {
+            Navigation.NavigateTo("/");
+        }
+        else
+        {
+            errorMessage = "Username or password is incorrect.";
+        }
+    }
+}

@@ -1,0 +1,45 @@
+@page "/newProduct"
+@using Services
+@using Shared.Dtos.Product;
+@inject ProductService ProductService
+
+<h3 class="text-2xl font-bold mb-4 mt-32 pl-20">Add New Product</h3>
+
+        <EditForm Model="@product" OnValidSubmit="HandleValidSubmit" class="px-20">
+            <DataAnnotationsValidator />
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
+                <InputText id="name" @bind-Value="product.Name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                <ValidationMessage For="@(() => product.Name)"/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="description">Description</label>
+                <InputTextArea id="description" @bind-Value="product.Description" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                <ValidationMessage For="@(() => product.Description)"/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="price">Price</label>
+                <InputNumber id="price" @bind-Value="product.Price" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                <ValidationMessage For="@(() => product.Price)"/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="imageUrl">ImageUrl</label>
+                <InputTextArea id="imageUrl" @bind-Value="product.ImageUrl" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                <ValidationMessage For="@(() => product.ImageUrl)"/>
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Product</button>
+        </EditForm>
+     
+
+
+@code {
+    private CreateProductDto product = new CreateProductDto();
+    private async Task HandleValidSubmit()
+    {
+        product.CategoryId = 1;
+        await ProductService.AddProductAsync(product);
+        
+        // Reset the form
+        product = new CreateProductDto();
+    }
+}
